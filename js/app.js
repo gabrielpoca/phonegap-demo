@@ -1,7 +1,7 @@
 (function() {
   var app;
 
-  app = angular.module('triplit', ['ui.router', 'ngAnimate', 'pouchdb']);
+  app = angular.module('triplit', ['ui.router', 'ngAnimate', 'pouchdb', 'angular-gestures']);
 
   app.controller('TripsController', function($scope, Trip) {
     return $scope.trips = Trip;
