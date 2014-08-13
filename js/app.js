@@ -1,7 +1,7 @@
 (function() {
   var app;
 
-  app = angular.module('triplit', ['ui.router', 'ngAnimate', 'pouchdb', 'angular-gestures']);
+  app = angular.module('triplit', ['ui.router', 'ngTouch', 'ngAnimate', 'pouchdb', 'angular-gestures']);
 
   app.controller('TripsController', function($scope, Trip) {
     return $scope.trips = Trip;
@@ -118,13 +118,7 @@
           templateUrl: 'partials/trips/index.html'
         },
         'nav@trips': {
-          templateUrl: 'partials/trips/index_nav.html',
-          controller: function($scope, $state, $rootScope) {
-            return $scope.next = function() {
-              $rootScope.next();
-              return $state.go('trips.new');
-            };
-          }
+          templateUrl: 'partials/trips/index_nav.html'
         }
       }
     }).state('trips.new', {
