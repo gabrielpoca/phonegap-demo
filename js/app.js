@@ -118,7 +118,13 @@
           templateUrl: 'partials/trips/index.html'
         },
         'nav@trips': {
-          templateUrl: 'partials/trips/index_nav.html'
+          templateUrl: 'partials/trips/index_nav.html',
+          controller: function($scope, $state, $rootScope) {
+            return $scope.next = function() {
+              $rootScope.next();
+              return $state.go('trips.new');
+            };
+          }
         }
       }
     }).state('trips.new', {
