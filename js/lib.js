@@ -27068,7 +27068,7 @@ function $StateRefDirective($state, $timeout) {
 
       if (isForm) return;
 
-      element.bind("tap click", function(e) {
+      element.bind("tap", function(e) {
         e.stopPropagation();
         e.preventDefault();
 
