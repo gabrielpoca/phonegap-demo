@@ -90,7 +90,7 @@
 }).call(this);
 
 (function() {
-  angular.module('triplit').directive("linked", function() {
+  angular.module('triplit').directive('linked', function() {
     return {
       link: function(scope, element, attrs) {
         var id;
