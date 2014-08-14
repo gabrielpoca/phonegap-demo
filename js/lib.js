@@ -27068,7 +27068,10 @@ function $StateRefDirective($state, $timeout) {
 
       if (isForm) return;
 
-      element.bind("click tap", function(e) {
+      element.bind("tap click", function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+
         var button = e.which || e.button;
         scope.$apply(attrs.uiSrefBefore);
 
@@ -27077,7 +27080,6 @@ function $StateRefDirective($state, $timeout) {
           $timeout(function() {
             $state.go(ref.state, params, options);
           });
-          e.preventDefault();
         }
       });
     }
