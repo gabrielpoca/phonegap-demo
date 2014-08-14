@@ -27068,8 +27068,10 @@ function $StateRefDirective($state, $timeout) {
 
       if (isForm) return;
 
-      element.bind("tap", function(e) {
+      element.bind("click tap", function(e) {
         var button = e.which || e.button;
+        scope.$apply(attrs.uiSrefBefore);
+
         if ( !(button > 1 || e.ctrlKey || e.metaKey || e.shiftKey || element.attr('target')) ) {
           // HACK: This is to allow ng-clicks to be processed before the transition is initiated:
           $timeout(function() {
