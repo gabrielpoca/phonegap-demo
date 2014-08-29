@@ -1,7 +1,7 @@
 (function() {
   var app;
 
-  app = angular.module('triplit', ['ui.router', 'ngTouch', 'ngAnimate', 'pouchdb', 'angular-gestures']);
+  app = angular.module('triplit', ['ui.router', 'ngTouch', 'ngAnimate', 'pouchdb']);
 
   app.controller('TripsController', function($scope, Trip) {
     return $scope.trips = Trip;
@@ -44,14 +44,26 @@
     });
   });
 
-  app.run(function($rootScope, $window) {
+  app.run(function($rootScope, $state, $stateParams, $window) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
     $rootScope.slide = '';
     return $rootScope.$on('$stateChangeStart', function() {
       $rootScope.back = function() {
-        return $rootScope.slide = 'slide-right';
+        var parameters;
+        $rootScope.slide = 'slide-right';
+        parameters = arguments;
+        return $window.setTimeout(function() {
+          return $state.go.apply($state, parameters);
+        }, 0);
       };
       return $rootScope.next = function() {
-        return $rootScope.slide = 'slide-left';
+        var parameters;
+        $rootScope.slide = 'slide-left';
+        parameters = arguments;
+        return $window.setTimeout(function() {
+          return $state.go.apply($state, parameters);
+        }, 0);
       };
     });
   });
